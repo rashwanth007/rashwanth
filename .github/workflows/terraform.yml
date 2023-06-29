@@ -1,36 +1,35 @@
 name: AWS OIDC Connect Demo
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 env:
-  AWS_REGION: "us-east-1" # Change to reflect your Region
+  AWS_REGION: "us-east-1" # Change to reflect your Region
 
 # Permission can be added at job level or workflow level
 permissions:
-  id-token: write   # This is required for requesting the JWT
-  contents: read    # This is required for actions/checkout
+  id-token: write
+  contents: read
 
 jobs:
-  AssumeRoleAndCallIdentity:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v3
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1.7.0
-        with:
-          role-to-assume: arn:aws:iam::268142843713:role/rashigithubactions # Change to reflect your IAM role’s ARN
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: ${{ env.AWS_REGION }}
-      - name: STS GetCallerIdentity
-        run: |
-          aws sts get-caller-identity
-      # Create S3 bucket
-      - name: Create S3 bucket
-        run: |
-          aws s3api create-bucket --bucket bucket5drdgfr --region us-east-1
+  AssumeRoleAndCallIdentity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          role-to-assume: arn:aws:iam::268142843713:role/rashigithubactions # Change to reflect your IAM role’s ARN
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: ${{ env.AWS_REGION }}
+      - name: STS GetCallerIdentity
+        run: |
+          aws sts get-caller-identity
+      - name: Create S3 bucket
+        run: |
+          aws s3api create-bucket --bucket bucket5hgggg --region us-east-1
 
