@@ -23,7 +23,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume:    - name: STS GetCallerIdentity
+          role-to-assume: arn:aws:iam::839401860566:role/github-oidc-role1 # Change to reflect your IAM role’s ARN
 
 on:
   push:
