@@ -35,26 +35,3 @@ jobs:
         run: |
           aws s3api create-bucket --bucket bucket5hd6hbf --region us-east-1
 
-Venkatesh Palli, Jun 29, 4:57 PM
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Federated": "arn:aws:iam::arn:aws:iam::612103922046:role/github_action"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-                "StringEquals": {
-                    "token.actions.githubusercontent.com:sub": [
-                        "repo:rashwanth007/token.actions.githubusercontent.com:pull_request",
-                        "repo:rashwanth007/token.actions.githubusercontent.com:ref:refs/heads/main"
-                    ],
-                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-                }
-            }
-        }
-    ]
-}
-
