@@ -23,30 +23,38 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume: arn:aws:iam::612103922046:role/github_action # Change to reflect your IAM role’s ARN
+          role-to-assume: arn:aws:iam::arn:aws:iam::612103922046:role/github_action # Change to reflect your IAM role’s ARN
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
       # Hello from AWS: WhoAmI
       - name: STS GetCallerIdentity
         run: |
           aws sts get-caller-identity
-      # Create S3 buckets
-      - name: Create S3 bucket 1
+      # Create S3 bucket
+      - name: Create S3 bucket
         run: |
-          aws s3api create-bucket --bucket bucket1364 --region us-east-1
-      - name: Create S3 bucket 2
-        run: |
-          aws s3api create-bucket --bucket bucket2738r --region us-east-1
-      - name: Create S3 bucket 3
-        run: |
-          aws s3api create-bucket --bucket bucket3er32 --region us-east-1
-      - name: Create S3 bucket 4
-        run: |
-          aws s3api create-bucket --bucket bucket437464 --region us-east-1
-      - name: Create S3 bucket 5
-        run: |
-          aws s3api create-bucket --bucket bucket57372h --region us-east-1
-      - name: Create S3 bucket 6
-        run: |
-          aws s3api create-bucket --bucket bucket6wsue63 --region us-east-1
+          aws s3api create-bucket --bucket bucket5hd6hbf --region us-east-1
+
+Venkatesh Palli, Jun 29, 4:57 PM
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::arn:aws:iam::612103922046:role/github_action"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "token.actions.githubusercontent.com:sub": [
+                        "repo:rashwanth007/token.actions.githubusercontent.com:pull_request",
+                        "repo:rashwanth007/token.actions.githubusercontent.com:ref:refs/heads/main"
+                    ],
+                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+                }
+            }
+        }
+    ]
+}
 
