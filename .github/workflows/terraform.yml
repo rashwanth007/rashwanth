@@ -1,48 +1,52 @@
 name: AWS OIDC Connect Demo
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 env:
-  AWS_REGION: "us-east-1" # Change to reflect your Region
+  AWS_REGION: "us-east-1" # Change to reflect your Region
 
 # Permission can be added at job level or workflow level
 permissions:
-  id-token: write   # This is required for requesting the JWT
-  contents: read    # This is required for actions/checkout
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
 
 jobs:
-  AssumeRoleAndCallIdentity:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v3
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1.7.0
-        with:
-          role-to-assume: arn:aws:iam::839401860566:role/github-oidc-role1 # Change to reflect your IAM role’s ARN
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: ${{ env.AWS_REGION }}
-      # Hello from AWS: WhoAmI
-      - name: STS GetCallerIdentity
-        run: |
-          aws sts get-caller-identity
-      # Create S3 bucket
-      - name: Create S3 bucket 1
-        run: |
-          aws s3api create-bucket --bucket bucket5hd6hbf --region us-east-1
-      - name: Create S3 bucket 2
-        run: |
-          aws s3api create-bucket --bucket bucket2abcd --region us-east-1
-      - name: Create S3 bucket 3
-        run: |
-          aws s3api create-bucket --bucket bucket3efgh --region us-east-1
-      - name: Create S3 bucket 4
-        run: |
-          aws s3api create-bucket --bucket bucket4ijkl --region us-east-1
-      - name: Create S3 bucket 5
-        run: |
-          aws s3api create-bucket --bucket bucket5mnop --region us-east-1
+  AssumeRoleAndCallIdentity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          role-to-assume: arn:aws:iam::636444753571:role/terraform # Change to reflect your IAM role’s ARN
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: ${{ env.AWS_REGION }}
+      # Hello from AWS: WhoAmI
+      - name: STS GetCallerIdentity
+        run: |
+          aws sts get-caller-identity
+      # Create S3 buckets
+      - name: Create S3 bucket 1
+        run: |
+          aws s3api create-bucket --bucket bucket1364 --region us-east-1
+      - name: Create S3 bucket 2
+        run: |
+          aws s3api create-bucket --bucket bucket2738r --region us-east-1
+      - name: Create S3 bucket 3
+        run: |
+          aws s3api create-bucket --bucket bucket3er32 --region us-east-1
+      - name: Create S3 bucket 4
+        run: |
+          aws s3api create-bucket --bucket bucket437464 --region us-east-1
+      - name: Create S3 bucket 5
+        run: |
+          aws s3api create-bucket --bucket bucket57372h --region us-east-1
+      - name: Create S3 bucket 6
+        run: |
+          aws s3api create-bucket --bucket bucket6wsue63 --region us-east-1
+
