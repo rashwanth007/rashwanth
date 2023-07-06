@@ -23,7 +23,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume: arn:aws:iam::arn:aws:iam::612103922046:role/github_action # Change to reflect your IAM role’s ARN
+          role-to-assume: arn:aws:iam::612103922046:role/github_action # Change to reflect your IAM role’s ARN
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
       # Hello from AWS: WhoAmI
@@ -33,5 +33,5 @@ jobs:
       # Create S3 bucket
       - name: Create S3 bucket
         run: |
-          aws s3api create-bucket --bucket bucket5hd6hbf --region us-east-1
+          aws s3api create-bucket --bucket bucket5hd6hhhjf --region us-east-1
 
