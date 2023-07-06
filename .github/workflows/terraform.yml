@@ -26,7 +26,7 @@ jobs:
           role-to-assume: arn:aws:iam::636444753571:role/terraform # Change to reflect your IAM role’s ARN
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
-      # Hello from AWS: WhoAmI
+      # Hello from AWS: hi to all
       - name: STS GetCallerIdentity
         run: |
           aws sts get-caller-identity
